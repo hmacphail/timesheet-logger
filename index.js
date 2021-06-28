@@ -4,8 +4,11 @@ const PORT = process.env.PORT || 5000
 
 const app = express();
 
-// routes =============================================
+// static pages
 app.use(express.static(path.join(__dirname, 'public')));
 
+// api routes
 app.use('/api', require('./server/routes'));
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+// start app on PORT
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));

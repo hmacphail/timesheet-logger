@@ -1,23 +1,13 @@
 const express = require('express');
 const router = express();
 
-// database connection =============================
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+const db = require("./models");
 
 // Get a list of all time entries
-router.get('/time-entry', async (req, res) => {
+router.get('/timeEntry', async (req, res) => {
   try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test_table');
-    const results = { 'results': (result) ? result.rows : null};
+    const results = await db.TimeEntry.findAll();
     res.send(results);
-    client.release();
   }
   catch (err) {
     console.error(err);
@@ -26,13 +16,28 @@ router.get('/time-entry', async (req, res) => {
 });
 
 // Get a time entry by unique id
-router.get('/time-entry/:id', (req, res) => {
+router.get('/timeEntry/:id', (req, res) => {
 
 });
 
 // Create a new time entry
-router.post('/time-entry', (req, res) => {
-
+router.post('/timeEntry', async (req, res) => {
+  try {
+    const results = await db.TimeEntry.create(req.body);
+    if (results) {
+      res.send({
+        title: "Operation Successful",
+        results: results
+      });
+    }
+    else {
+      throw new Error("Failed to create Time Entry");
+    }
+  }
+  catch (err) {
+    console.error(err);
+    res.status(500).send("Error " + err);
+  }
 });
 
 module.exports = router;
