@@ -11,7 +11,9 @@ router.get('/timeEntry', async (req, res) => {
   }
   catch (err) {
     console.error(err);
-    res.status(500).send("Error " + err);
+    res.status(500).send({
+      message: err
+    });
   }
 });
 
@@ -26,7 +28,7 @@ router.post('/timeEntry', async (req, res) => {
     const results = await db.TimeEntry.create(req.body);
     if (results) {
       res.send({
-        title: "Operation Successful",
+        message: "Operation Successful",
         results: results
       });
     }
@@ -36,7 +38,9 @@ router.post('/timeEntry', async (req, res) => {
   }
   catch (err) {
     console.error(err);
-    res.status(500).send("Error " + err);
+    res.status(500).send({
+      message: err
+    });
   }
 });
 

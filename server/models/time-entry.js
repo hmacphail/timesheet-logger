@@ -1,17 +1,20 @@
 module.exports = function (sequelize, DataTypes) {
   return sequelize.define('time_entry', {
-    course: {
+    subject: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    description: {
+    activity: {
+      type: DataTypes.STRING
+    },
+    comments: {
       type: DataTypes.STRING
     },
     startTime: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    stopTime: {
+    endTime: {
       type: DataTypes.DATE,
       allowNull: false
     },
