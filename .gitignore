@@ -1,3 +1,6 @@
+# Angular build artifacts
+public
+
 # Node build artifacts
 node_modules
 npm-debug.log
