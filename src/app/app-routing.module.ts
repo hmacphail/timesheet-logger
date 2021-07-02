@@ -10,7 +10,7 @@ const routes: Routes = [
     component: NewEntryComponent
   },
   {
-    path: "/month",
+    path: "month",
     component: MonthSummaryComponent
   }
 ];

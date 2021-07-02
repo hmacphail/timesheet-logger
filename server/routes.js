@@ -1,10 +1,10 @@
-const express = require('express');
+const express = require("express");
 const router = express();
 
 const db = require("./models");
 
 // Get a list of all time entries
-router.get('/timeEntry', async (req, res) => {
+router.get("/timeEntry", async (req, res) => {
   try {
     const results = await db.TimeEntry.findAll();
     res.send(results);
@@ -17,13 +17,8 @@ router.get('/timeEntry', async (req, res) => {
   }
 });
 
-// Get a time entry by unique id
-router.get('/timeEntry/:id', (req, res) => {
-
-});
-
 // Create a new time entry
-router.post('/timeEntry', async (req, res) => {
+router.post("/timeEntry", async (req, res) => {
   try {
     const results = await db.TimeEntry.create(req.body);
     if (results) {

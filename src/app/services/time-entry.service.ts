@@ -15,12 +15,7 @@ export class TimeEntryService {
 
   getAllTimeEntries() {
     const url = this.serverUrl + "/timeEntry";
-    return this.httpClient.get(url);
-  }
-
-  getTimeEntryById(timeEntryId: number) {
-    const url = this.serverUrl + "/timeEntry/" + timeEntryId;
-    return this.httpClient.get(url);
+    return this.httpClient.get<ITimeEntry[]>(url);
   }
 
   createTimeEntry(timeEntry: ITimeEntry) {

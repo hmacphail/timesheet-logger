@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  return sequelize.define('time_entry', {
+  return sequelize.define("time_entry", {
     subject: {
       type: DataTypes.STRING,
       allowNull: false
@@ -22,6 +22,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN
     }
   }, {
-    tableName: 'time_entry'
+    tableName: "time_entry"
   });
 };

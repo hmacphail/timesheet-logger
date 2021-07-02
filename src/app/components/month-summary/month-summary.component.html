@@ -1,1 +1,48 @@
-<p>month-summary works!</p>
+<div class="container my-4">
+
+  <!-- Header -->
+  <div class="row mb-2">
+    <h5 class="col-sm-6">Monthly Summary</h5>
+    <!-- Goto Time Entry Page -->
+    <div class="col-sm-6">
+      <button type="button" class="btn btn-sm btn-secondary float-sm-end" [routerLink]="['..']">
+        Add Time Entry
+      </button>
+    </div>
+  </div>
+
+  <!-- Summary Table -->
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Start Time</th>
+            <th scope="col">End Time</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Attachment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of timeEntries">
+            <td>{{ entry.startTime | date }}</td>
+            <td>{{ entry.startTime }}</td>
+            <td>{{ entry.endTime }}</td>
+            <td></td>
+            <td>{{ entry.subject }}</td>
+            <td>{{ entry.activity }}</td>
+            <td>{{ entry.comments }}</td>
+            <td>
+              <i *ngIf="entry.attachment" class="fas fa-paperclip"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
