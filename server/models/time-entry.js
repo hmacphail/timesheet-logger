@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     comments: {
-      type: DataTypes.STRING
+      type: DataTypes.TEXT
     },
     startTime: {
       type: DataTypes.DATE,
