@@ -20,11 +20,11 @@ router.get("/timeEntry", async (req, res) => {
 // Create a new time entry
 router.post("/timeEntry", async (req, res) => {
   try {
-    const results = await db.TimeEntry.create(req.body);
-    if (results) {
+    const result = await db.TimeEntry.create(req.body);
+    if (result) {
       res.send({
         message: "Operation Successful",
-        results: results
+        results: result.id
       });
     }
     else {

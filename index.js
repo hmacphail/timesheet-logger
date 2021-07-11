@@ -9,6 +9,10 @@ const app = express();
 app.use(compression());
 app.use(express.static(path.join(__dirname, "public")));
 
+// parse incoming reqs with JSON payloads
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+
 // api routes
 app.use("/api", require("./server/routes"));
 
