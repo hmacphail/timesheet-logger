@@ -25,11 +25,25 @@
       <div class="form-group mb-3">
         <label class="form-label required">Subject</label>
         <input type="text" required class="form-control" formControlName="subject" />
+        <!-- subject errors -->
+        <div *ngIf="newEntryForm.controls.subject.errors && newEntryForm.controls.subject.touched"
+          class="small form-text text-danger">
+          <div *ngIf="newEntryForm.controls.subject.errors.required">
+            Subject is required
+          </div>
+        </div>
       </div>
       <!-- Activity -->
       <div class="form-group mb-3">
         <label class="form-label required">Activity</label>
         <input type="text" required class="form-control" formControlName="activity" />
+        <!-- activity errors -->
+        <div *ngIf="newEntryForm.controls.activity.errors && newEntryForm.controls.activity.touched"
+          class="small form-text text-danger">
+          <div *ngIf="newEntryForm.controls.activity.errors.required">
+            Activity is required
+          </div>
+        </div>
       </div>
       <!-- Comments -->
       <div class="form-group mb-3">
@@ -48,19 +62,52 @@
             <i class="fas fa-calendar-alt" aria-hidden="true"></i>
           </div>
         </div>
+        <!-- entry date errors -->
+        <div *ngIf="newEntryForm.controls.entryDate.errors && newEntryForm.controls.entryDate.touched"
+          class="small form-text text-danger">
+          <div *ngIf="newEntryForm.controls.entryDate.errors.required">
+            Date is required
+          </div>
+          <div *ngIf="newEntryForm.controls.entryDate.errors.outOfRange">
+            Date is out of range
+          </div>
+        </div>
       </div>
       <div class="row">
         <!-- Start Time -->
         <div class="form-group mb-3 col-sm-6">
           <label class="form-label required">Start Time</label>
-          <ngb-timepicker formControlName="startTimestamp" required [meridian]="true" [spinners]="false">
+          <ngb-timepicker formControlName="startTimestamp" [meridian]="true" [spinners]="false" [minuteStep]="15">
           </ngb-timepicker>
+          <!-- start time errors -->
+          <div *ngIf="newEntryForm.controls.startTimestamp.errors && newEntryForm.controls.startTimestamp.touched"
+            class="small form-text text-danger">
+            <div *ngIf="newEntryForm.controls.startTimestamp.errors.required">
+              Start Time is required
+            </div>
+            <div *ngIf="newEntryForm.controls.startTimestamp.errors.outOfRange">
+              Start Time is out of range
+            </div>
+            <div *ngIf="newEntryForm.controls.startTimestamp.errors.afterEndTime">
+              Start Time must be before End Time
+            </div>
+          </div>
         </div>
         <!-- End Time -->
         <div class="form-group mb-3 col-sm-6">
           <label class="form-label required">End Time</label>
-          <ngb-timepicker formControlName="endTimestamp" required [meridian]="true" [spinners]="false">
+          <ngb-timepicker formControlName="endTimestamp" [meridian]="true" [spinners]="false" [minuteStep]="15">
           </ngb-timepicker>
+          <!-- end time errors -->
+          <div *ngIf="newEntryForm.controls.endTimestamp.errors && newEntryForm.controls.endTimestamp.touched"
+            class="small form-text text-danger">
+            <div *ngIf="newEntryForm.controls.endTimestamp.errors.required">
+              End Time is required
+            </div>
+            <div *ngIf="newEntryForm.controls.endTimestamp.errors.outOfRange">
+              End Time is out of range
+            </div>
+          </div>
         </div>
       </div>
       <!-- Attachment -->
