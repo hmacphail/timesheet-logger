@@ -3,6 +3,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgxUiLoaderModule } from "ngx-ui-loader";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -22,7 +23,12 @@ import { NewEntryComponent } from "./components/new-entry/new-entry.component";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    NgxUiLoaderModule.forRoot({
+      hasProgressBar: false,
+      fgsColor: "rgba(255,255,255,0.8)",
+      overlayColor: "rgba(0,0,0,0.5)"
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
