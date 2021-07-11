@@ -16,5 +16,8 @@ app.use(express.json())
 // api routes
 app.use("/api", require("./server/routes"));
 
+// default route to serve static pages
+app.use("/*", express.static(path.join(__dirname, "public")));
+
 // start app on PORT
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));

@@ -1,7 +1,7 @@
 <div class="container my-4">
 
   <!-- Header -->
-  <div class="row mb-2">
+  <div class="row mb-4">
     <h5 class="col-sm-6">Time Entry</h5>
     <!-- Goto Monthly Summary Page -->
     <div class="col-sm-6">
@@ -12,9 +12,9 @@
   </div>
 
   <!-- Submission Success Message -->
-  <div *ngIf="submitted" class="row mb-2">
+  <div *ngIf="submitted" class="row">
     <div class="col-sm-6">
-      <span>New Entry Submitted</span>
+      <div class="alert alert-success">New Entry Submitted</div>
     </div>
   </div>
 

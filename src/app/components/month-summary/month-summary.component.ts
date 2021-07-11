@@ -21,7 +21,11 @@ export class MonthSummaryComponent implements OnInit {
 
   getTimeEntries() {
     this.timeEntryService.getAllTimeEntries().subscribe((entries) => {
-      this.timeEntries = entries;
+      this.timeEntries = entries.sort((a, b) => {
+        if (a.startTime < b.startTime) return -1;
+        else if (a.startTime > b.startTime) return 1;
+        else return 0;
+      });
     });
   }
 
