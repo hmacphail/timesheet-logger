@@ -2,9 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { NgbDateParserFormatter, NgbDateStruct, NgbTimeStruct } from "@ng-bootstrap/ng-bootstrap";
 import { DateTime } from "luxon";
-import { ITimeEntry } from "src/app/models/time-entry";
 
 import { TimeEntryService } from "src/app/services/time-entry.service";
+import { ITimeEntry } from "src/app/models/time-entry";
 
 @Component({
   templateUrl: "./new-entry.component.html",

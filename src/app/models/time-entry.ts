@@ -3,8 +3,8 @@ export interface ITimeEntry {
   subject: string;
   activity: string;
   comments: string;
-  startTime: Date;
-  endTime: Date;
+  startTime: Date | string;
+  endTime: Date | string;
   attachment: boolean;
   createdAt?: Date;
   updatedAt?: Date;

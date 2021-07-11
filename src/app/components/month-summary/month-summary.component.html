@@ -11,6 +11,15 @@
     </div>
   </div>
 
+  <!-- Month Picker -->
+  <div class="row mb-2">
+    <div class="col-6 col-sm-3">
+      <select class="form-select" [(ngModel)]="selectedMonth" (ngModelChange)="setMonthFilter()">
+        <option *ngFor="let month of months" [ngValue]="month.value">{{ month.label }}</option>
+      </select>
+    </div>
+  </div>
+
   <!-- Summary Table -->
   <div class="row">
     <div class="col-sm-12">
@@ -28,11 +37,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let entry of timeEntries">
+          <tr *ngFor="let entry of visibleTimeEntries">
             <td>{{ entry.startTime | date }}</td>
-            <td>{{ entry.startTime }}</td>
-            <td>{{ entry.endTime }}</td>
-            <td></td>
+            <td>{{ entry.startTime | date:'shortTime' }}</td>
+            <td>{{ entry.endTime | date:'shortTime' }}</td>
+            <td>{{ getDuration(entry) }}</td>
             <td>{{ entry.subject }}</td>
             <td>{{ entry.activity }}</td>
             <td>{{ entry.comments }}</td>
