@@ -21,10 +21,14 @@
   <!-- Page Form -->
   <div *ngIf="!submitted" class="row mb-2">
     <form class="col-sm-6" novalidate [formGroup]="newEntryForm" (ngSubmit)="submitForm()" autocomplete="off">
+
       <!-- Subject -->
       <div class="form-group mb-3">
         <label class="form-label required">Subject</label>
-        <input type="text" required class="form-control" formControlName="subject" />
+        <select class="form-select" formControlName="subject">
+          <option value="" disabled selected>Choose a Subject</option>
+          <option *ngFor="let subj of subjectOptions" [ngValue]="subj">{{ subj }}</option>
+        </select>
         <!-- subject errors -->
         <div *ngIf="newEntryForm.controls.subject.errors && newEntryForm.controls.subject.touched"
           class="small form-text text-danger">
@@ -33,6 +37,7 @@
           </div>
         </div>
       </div>
+
       <!-- Activity -->
       <div class="form-group mb-3">
         <label class="form-label required">Activity</label>
@@ -45,12 +50,14 @@
           </div>
         </div>
       </div>
+
       <!-- Comments -->
       <div class="form-group mb-3">
         <label class="form-label">Comments</label>
         <textarea class="form-control" rows="3" formControlName="comments" autocomplete="off" list="autocompleteOff">
         </textarea>
       </div>
+
       <!-- Entry Date -->
       <div class="form-group mb-3">
         <label class="form-label required">Date</label>
@@ -73,6 +80,7 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <!-- Start Time -->
         <div class="form-group mb-3 col-sm-6">
@@ -110,6 +118,7 @@
           </div>
         </div>
       </div>
+
       <!-- Attachment -->
       <div class="form-group mb-3">
         <label class="form-label">Attachment</label>
@@ -120,6 +129,7 @@
       <div class="form-group mt-4 mb-3">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
+
     </form>
   </div>
 

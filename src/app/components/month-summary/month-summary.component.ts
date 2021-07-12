@@ -40,13 +40,13 @@ export class MonthSummaryComponent implements OnInit {
     this.getTimeEntries();
   }
 
-  getTimeEntries() {
+  getTimeEntries(): void {
     this.timeEntryService.getAllTimeEntries().subscribe((entries) => {
       this.setupTimeEntries(entries);
     });
   }
 
-  setupTimeEntries(entries: ITimeEntry[]) {
+  setupTimeEntries(entries: ITimeEntry[]): void {
     // sort time entries
     this.allTimeEntries = entries.sort((a, b) => {
       if (a.startTime < b.startTime) return -1;
@@ -61,7 +61,7 @@ export class MonthSummaryComponent implements OnInit {
     this.loaderService.stop();
   }
 
-  getDuration(timeEntry: ITimeEntry) {
+  getDuration(timeEntry: ITimeEntry): string {
     const start = DateTime.fromISO(timeEntry.startTime as string);
     const end = DateTime.fromISO(timeEntry.endTime as string);
 
@@ -74,7 +74,7 @@ export class MonthSummaryComponent implements OnInit {
     return `${paddedMins}m`;
   }
 
-  setMonthFilter(allEntries?: ITimeEntry[]) {
+  setMonthFilter(allEntries?: ITimeEntry[]): void {
     if (!allEntries) {
       allEntries = this.allTimeEntries;
     }
