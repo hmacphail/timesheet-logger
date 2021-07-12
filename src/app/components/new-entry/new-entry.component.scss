@@ -1,0 +1,7 @@
+.required {
+  &:after {
+    content: "*";
+    color: var(--bs-red);
+    padding-left: 5px;
+  }
+}

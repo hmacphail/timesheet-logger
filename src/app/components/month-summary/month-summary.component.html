@@ -54,4 +54,53 @@
     </div>
   </div>
 
+  <div class="row mt-5">
+    <!-- Current Discount Calculations -->
+    <div class="col-lg-3 col-6 mb-3">
+      <div class="border px-3 py-2">
+        <table class="table table-sm table-borderless mb-1">
+          <tbody>
+            <tr *ngIf="(selectedMonth == NOW.month)">
+              <th scope="row">Hrs this Week</th>
+              <td>{{ currentHrsPerWk }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Hrs this Month</th>
+              <td>{{ currentHrsPerMnth }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Rent Discount</th>
+              <td class="text-danger">{{ currentDiscount }}</td>
+            </tr>
+            <tr>
+              <th scope="row">Amount Owing</th>
+              <td>{{ "$" + currentRent }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Discount Values Table -->
+    <div class="col-md-6 offset-lg-3">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Discount</th>
+            <th scope="col">Rent</th>
+            <th scope="col">Hrs / Week</th>
+            <th scope="col">Hrs / Month</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of discountTableEntries" [class.extra-tier]="entry.isExtraTier">
+            <td class="text-danger">{{ entry.discount }}</td>
+            <td>{{ "$" + entry.rent }}</td>
+            <td>{{ entry.hrsPerWk }}</td>
+            <td>{{ entry.hrsPerMnth }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
