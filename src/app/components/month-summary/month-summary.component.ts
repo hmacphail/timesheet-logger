@@ -80,15 +80,15 @@ export class MonthSummaryComponent implements OnInit {
       const weekTier: number = Number.parseInt(wkTier);
       if (!isNaN(weekTier)) {
         const rentDiscount = RentDiscount[wkTier];
-        const isExtraTier = (weekTier == WeeklyDiscountTiers.Six || weekTier == WeeklyDiscountTiers.Seven
-          || weekTier == WeeklyDiscountTiers.Eight || weekTier == WeeklyDiscountTiers.Nine);
+        // const isExtraTier = (weekTier == WeeklyDiscountTiers.Six || weekTier == WeeklyDiscountTiers.Seven
+        //   || weekTier == WeeklyDiscountTiers.Eight || weekTier == WeeklyDiscountTiers.Nine);
 
         this.discountTableEntries.push({
           discount: rentDiscount,
           hrsPerWk: weekTier,
           hrsPerMnth: Math.round(weekTier * this.WEEKS_PER_MNTH),
           rent: DefaultRent - rentDiscount,
-          isExtraTier: isExtraTier
+          isExtraTier: false
         });
       }
     }
