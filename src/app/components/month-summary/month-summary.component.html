@@ -38,9 +38,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let entry of visibleTimeEntries">
-            <td>{{ entry.startTime | date }}</td>
-            <td>{{ entry.startTime | date:'shortTime' }}</td>
-            <td>{{ entry.endTime | date:'shortTime' }}</td>
+            <td>{{ entry.startTime | date:'MM-dd' }}</td>
+            <td>{{ entry.startTime | date:'HH:mm' }}</td>
+            <td>{{ entry.endTime | date:'HH:mm' }}</td>
             <td>{{ getDuration(entry) }}</td>
             <td>{{ entry.subject }}</td>
             <td>{{ entry.activity }}</td>
